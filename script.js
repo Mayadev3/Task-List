@@ -23,10 +23,13 @@ function addTask(e) {
   li.appendChild(link);
   taskList.appendChild(li);
 
+  taskInput.value = "";
   /*here i am clearing the input after submitting so it is ready for a second input to be submitted*/
 
   link.addEventListener("click", function (e) {
-    li.remove();
+    if (confirm("Are You Sure?")) {
+      li.remove();
+    }
   });
 
   let task = taskInput.value;
@@ -40,13 +43,7 @@ function addTask(e) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   taskInput.value = "";
 }
-let tasks = JSON.parse(localStorage.getItem("tasks"));
+/*let tasks = JSON.parse(localStorage.getItem("tasks"));
 tasks.forEach((task) => {
   console.log(task);
-
-  clearBtn.addEventListener("click", clearAll);
-  function clearAll(e) {
-    e.preventDefault();
-    let tasks = JSON.parse(localStorage.getItem("tasks")).clear();
-  }
-});
+});*/
