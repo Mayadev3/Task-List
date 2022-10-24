@@ -43,14 +43,14 @@ function addTask(e) {
   }
   tasks.push(task);
   localStorage.setItem("tasks", JSON.stringify(tasks));
-  taskInput.value = "";
 }
 
 //Clear tasks function
 function clearTasks() {
-  // one way is this one: taskList.innerHTML = "";
-  //another faster way is that while the ul has a first child :
+  //this is one way: taskList.innerHTML = "";
+  //this is a faster way
+  taskList.firstChild;
   while (taskList.firstChild) {
-    taskList.remove(taskList.firstChild);
+    taskList.removeChild(taskList.firstChild);
   }
 }
