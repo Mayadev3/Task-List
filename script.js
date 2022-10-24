@@ -8,9 +8,10 @@ loadEventListeners();
 
 function loadEventListeners() {
   //this function is for all the event listeners i want
-  //add task event
+
   form.addEventListener("submit", addTask);
   clearBtn.addEventListener("click", clearTasks);
+  filter.addEventListener("keyup", filterTasks);
 }
 function addTask(e) {
   e.preventDefault();
@@ -53,4 +54,19 @@ function clearTasks() {
   while (taskList.firstChild) {
     taskList.removeChild(taskList.firstChild);
   }
+}
+
+function filterTasks(e) {
+  /*i am able to loop through the lis here because querySelectorAll returns a node list, but if it was getElementByClass
+  then we would have to convert it into an array to be able to loop through it*/
+  e.preventDefault();
+  let text = e.target.value.toLowerCase();
+  document.querySelectorAll(".collection-item").forEach((task) => {
+    const item = task.firstChild.textContent;
+    if (item.toLowerCase().indexOf(text) != -1) {
+      task.style.display = "block";
+    } else {
+      task.style.display = "none";
+    }
+  });
 }
