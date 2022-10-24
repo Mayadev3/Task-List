@@ -7,8 +7,10 @@ const taskInput = document.querySelector("#task");
 loadEventListeners();
 
 function loadEventListeners() {
+  //this function is for all the event listeners i want
   //add task event
   form.addEventListener("submit", addTask);
+  clearBtn.addEventListener("click", clearTasks);
 }
 function addTask(e) {
   e.preventDefault();
@@ -43,7 +45,12 @@ function addTask(e) {
   localStorage.setItem("tasks", JSON.stringify(tasks));
   taskInput.value = "";
 }
-/*let tasks = JSON.parse(localStorage.getItem("tasks"));
-tasks.forEach((task) => {
-  console.log(task);
-});*/
+
+//Clear tasks function
+function clearTasks() {
+  // one way is this one: taskList.innerHTML = "";
+  //another faster way is that while the ul has a first child :
+  while (taskList.firstChild) {
+    taskList.remove(taskList.firstChild);
+  }
+}
