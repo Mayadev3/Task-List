@@ -26,7 +26,6 @@ function addTask(e) {
   li.appendChild(link);
   taskList.appendChild(li);
 
-  taskInput.value = "";
   /*here i am clearing the input after submitting so it is ready for a second input to be submitted*/
 
   link.addEventListener("click", function (e) {
@@ -44,6 +43,7 @@ function addTask(e) {
   }
   tasks.push(task);
   localStorage.setItem("tasks", JSON.stringify(tasks));
+  taskInput.value = "";
 }
 
 //Clear tasks function
