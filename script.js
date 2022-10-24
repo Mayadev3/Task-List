@@ -25,4 +25,8 @@ function addTask(e) {
 
   taskInput.value =
     ""; /*here i am clearing the input after submitting so it is ready for a second input to be submitted*/
+
+  link.addEventListener("click", function (e) {
+    li.remove();
+  });
 }
