@@ -11,11 +11,12 @@ function loadEventListeners() {
   form.addEventListener("submit", addTask);
   clearBtn.addEventListener("click", clearTasks);
   filter.addEventListener("keyup", filterTasks);
+  taskList.addEventListener("click", removeTask);
   //DOM Load event
-  document.addEventListener("DOMContentLoaded", getTasks);
+  document.addEventListener("DOMContentLoaded", putStoredTasksInDom);
 }
 
-function getTasks() {
+function putStoredTasksInDom() {
   let tasks;
   if (localStorage.getItem("tasks") === null) {
     tasks = [];
@@ -36,12 +37,6 @@ function getTasks() {
     taskList.appendChild(li);
 
     /*here i am clearing the input after submitting so it is ready for a second input to be submitted*/
-
-    link.addEventListener("click", function (e) {
-      if (confirm("Are You Sure?")) {
-        li.remove();
-      }
-    });
   });
 }
 
@@ -60,12 +55,6 @@ function addTask(e) {
 
   /*here i am clearing the input after submitting so it is ready for a second input to be submitted*/
 
-  link.addEventListener("click", function (e) {
-    if (confirm("Are You Sure?")) {
-      li.remove();
-    }
-  });
-
   let task = taskInput.value;
   let tasks;
   if (localStorage.getItem("tasks") === null) {
@@ -81,6 +70,32 @@ function addTask(e) {
   });
 
   taskInput.value = "";
+}
+
+function removeTask(e) {
+  if (e.target.parentElement.classList.contains("delete-item")) {
+    if (confirm("Are You Sure?")) {
+      e.target.parentElement.parentElement.remove();
+
+      // Remove from LS
+      removeTaskFromLocalStorage(e.target.parentElement.parentElement);
+    }
+  }
+}
+function removeTaskFromLocalStorage(taskItem) {
+  let tasks;
+  if (localStorage.getItem("tasks") === null) {
+    tasks = [];
+  } else {
+    tasks = JSON.parse(localStorage.getItem("tasks"));
+  }
+
+  tasks.forEach(function (task, index) {
+    if (taskItem.textContent === task) {
+      tasks.splice(index, 1); //if i don't assign to take off 1, then it will take this one specific one off and the rest
+    }
+  });
+  localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
 //Clear tasks function
