@@ -106,7 +106,12 @@ function clearTasks() {
   while (taskList.firstChild) {
     taskList.removeChild(taskList.firstChild);
   }
+  clearTasksFromLocalStorage();
 }
+function clearTasksFromLocalStorage() {
+  localStorage.clear();
+}
+
 function filterTasks(e) {
   /*i am able to loop through the lis here because querySelectorAll returns a node list, but if it was getElementByClass
   then we would have to convert it into an array to be able to loop through it*/
