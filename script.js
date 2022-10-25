@@ -55,20 +55,24 @@ function clearTasks() {
     taskList.removeChild(taskList.firstChild);
   }
 }
-
 function filterTasks(e) {
   /*i am able to loop through the lis here because querySelectorAll returns a node list, but if it was getElementByClass
   then we would have to convert it into an array to be able to loop through it*/
   /*i put it either as let something = e.target.value or something = input.value*/
   /*indexOf being -1 always means that the item is not available*/
-  e.preventDefault();
-  let text = e.target.value.toLowerCase();
+  let values = e.target.value;
   document.querySelectorAll(".collection-item").forEach((task) => {
-    const item = task.firstChild.textContent;
-    if (item.toLowerCase().indexOf(text) != -1) {
+    let firstItem = task.firstChild.textContent;
+    if (firstItem.indexOf(values) != -1) {
       task.style.display = "block";
     } else {
       task.style.display = "none";
     }
   });
 }
+/* in the filterTasks :
+select the input value
+select all the lis
+loop through the lis
+put the first li and its textContent in a variable
+see if the first li whose index represents the input isnt -1 then display that li, otherwise dont*/
