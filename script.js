@@ -73,6 +73,7 @@ function addTask(e) {
 }
 
 function removeTask(e) {
+  //here i am telling it to focus on the thing whose parent has a delete-item out of all the targetted elements
   if (e.target.parentElement.classList.contains("delete-item")) {
     if (confirm("Are You Sure?")) {
       e.target.parentElement.parentElement.remove();
@@ -99,9 +100,11 @@ function removeTaskFromLocalStorage(taskItem) {
       if i don't assign to take off 1, then it will take this one specific one off and the rest*/
     }
   });
-  localStorage.setItem("tasks", JSON.stringify(tasks));
+  localStorage.setItem(
+    "tasks",
+    JSON.stringify(tasks)
+  ); /* here i have to send back the new array which was spliced*/
 }
-
 //Clear tasks function
 function clearTasks() {
   //this is one way: taskList.innerHTML = "";
