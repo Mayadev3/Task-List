@@ -28,7 +28,12 @@
               <div class="row">
                 <form id="task-form">
                   <div class="col s12 input-field">
-                    <input type="text" id="task" name="task" />
+                    <input
+                      type="text"
+                      id="task"
+                      name="task"
+                      autocomplete="off"
+                    />
                     <label for="task">New Task</label>
                   </div>
                   <input type="submit" value="Add Task" class="btn purple" />
@@ -38,7 +43,12 @@
             <div class="card-action">
               <h5 id="task-title">My Tasks</h5>
               <div class="col s12 input-field">
-                <input type="text" id="filter" name="filter" />
+                <input
+                  type="text"
+                  id="filter"
+                  name="filter"
+                  autocomplete="off"
+                />
                 <label for="filter">Filter Tasks</label>
               </div>
               <ul class="collection"></ul>
@@ -58,22 +68,3 @@
     <script src="/script.js"></script>
   </body>
 </html>
-<!--function removeTaskFromLocalStorage(taskItem) {
-  let tasks;
-  if (localStorage.getItem("tasks") === null) {
-    tasks = [];
-  } else {
-    tasks = JSON.parse(localStorage.getItem("tasks"));
-  }
-
-  tasks.forEach(function (task, index) {
-    if (taskItem.textContent === task) {
-      tasks.splice(
-        index,
-        1
-      ); /*remember that with splice we need to assign a position and how many to remove, so index is the position and 1 is how many
-      if i don't assign to take off 1, then it will take this one specific one off and the rest*/
-    }
-  });
-  localStorage.setItem("tasks", JSON.stringify(tasks));
-}-->
