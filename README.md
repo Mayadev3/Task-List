@@ -12,3 +12,7 @@ Coding Achievements:
 - Built a function that filters through the tasks
 - Added a clear all button
 
+
+
+https://user-images.githubusercontent.com/107764065/198287665-634fbaf2-661f-447c-b799-401d54932ae2.mp4
+
